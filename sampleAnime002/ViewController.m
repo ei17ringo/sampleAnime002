@@ -16,7 +16,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    //タイマーを宣言
+    [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(moveLabel:) userInfo:nil repeats:YES];
+}
+
+-(void)moveLabel:(NSTimer *)timer{
+    float wx = self.movingLabel.center.x;
+    float wy = self.movingLabel.center.y;
+    wx += 10;
+    if (320 < wx){
+        wx = 0;
+    }
+    
+    wy += 5;
+    if (480 < wy){
+        wy = 0;
+    }
+    
+    self.movingLabel.center = CGPointMake(wx, wy);
 }
 
 - (void)didReceiveMemoryWarning {
